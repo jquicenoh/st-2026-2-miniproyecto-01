@@ -29,7 +29,7 @@ entrega pierde el 20 %; quien no aparezca aquí no cuenta como parte del grupo.
 
 | Nombre completo | Código | Correo institucional |
 |---|---|---|
-| | | |
+|Jessica Quiceno Henao | 22602447| jessica.quiceno@uao.edu.co|
 | | | |
 | | | |
 

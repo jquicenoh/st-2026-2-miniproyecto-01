@@ -33,23 +33,27 @@ RESULTADOS.mkdir(exist_ok=True)
 # Cambie estos cuatro datos por los de la serie del grupo y documente la
 # fuente en datos/README.md. La serie de ejemplo solo sirve para probar que
 # el guion corre.
-ARCHIVO = "datos/air_passengers.csv"
-FECHA = "Month"
-VALOR = "#Passengers"
+ARCHIVO = "datos/prendas_vestir.csv"
+FECHA = "fecha"
+VALOR = "indice_ventas"
 PERIODO = 12
 
 # Lo que se hizo con los huecos y con los datos atípicos, en una línea. Va
 # a la columna `decision` de la tabla de métricas.
-DECISION = "TODO: describa aquí la decisión sobre huecos y datos atípicos"
+DECISION = (
+    "Sin huecos: no se imputa. Se conservan todas las observaciones, "
+    "incluidos los picos estacionales y la caída excepcional de 2020."
+)
 
 
 def preparar(serie):
-    """TODO: aplique la decisión del grupo sobre huecos y datos atípicos.
+    """Conservar la serie original y comprobar que no tenga valores faltantes."""
+    if serie.isna().any():
+        raise ValueError(
+            "La serie contiene valores faltantes; revise la fuente."
+        )
 
-    Por ejemplo, interpolar los meses vacíos o recortar el tramo afectado.
-    Debe devolver una serie sin NaN.
-    """
-    return serie
+    return serie.copy()
 
 
 def graficar_serie(serie):

@@ -1,0 +1,3 @@
+modelo,decision,RMSE,MAE,MAPE
+estacional ingenuo,"Sin huecos: no se imputa. Se conservan todas las observaciones, incluidos los picos estacionales y la caída excepcional de 2020.",6.26,5.54,4.87
+ingenuo,"Sin huecos: no se imputa. Se conservan todas las observaciones, incluidos los picos estacionales y la caída excepcional de 2020.",63.08,38.41,30.1
