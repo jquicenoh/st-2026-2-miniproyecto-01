@@ -34,7 +34,7 @@ $$
 
 donde $T_t$ es la tendencia, $S_t$ es la estacionalidad y $R_t$ el residuo de descomposición. STL describe los componentes y **no es, por sí misma, el modelo de pronóstico evaluado**. El ajuste robusto reduce el peso de observaciones excepcionales al estimar los componentes, sin alterar la serie original.
 
-![Descomposición STL robusta](../figuras/stl.png)
+![Descomposición STL robusta](/figuras/stl.png)
 
 *Figura 2. Tendencia, estacionalidad y residuo de la descomposición STL robusta.*
 
