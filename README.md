@@ -16,7 +16,7 @@ La elección responde a la presencia de un patrón anual marcado —con máximos
 
 **Fuente y condiciones de uso.** El archivo proviene de los [históricos de la EMC del DANE](https://www.dane.gov.co/index.php/estadisticas-por-tema/comercio-interno/encuesta-mensual-de-comercio-emc/encuesta-mensual-de-comercio-emc-historicos); [anexo de agosto de 2026](https://www.dane.gov.co/files/operaciones/EMC/anex-EMC-ComercioMinorista-ago2026.xlsx). Las [condiciones generales de uso del DANE](https://www.dane.gov.co/index.php/en/terrminos-y-condiciones-dane) se citan para documentar la reutilización y atribución, sin adjudicar al anexo una licencia Creative Commons no constatada. **Fuente: Departamento Administrativo Nacional de Estadística: www.dane.gov.co.** La ficha detallada debe conservarse en `datos/README.md`.
 
-![Serie mensual original del índice de ventas reales](../figuras/serie.png)
+![Serie mensual original del índice de ventas reales](/figuras/serie.png)
 
 *Figura 1. Serie mensual nacional del índice de ventas reales de prendas de vestir y textiles, 2019–2026. Fuente: DANE, elaboración del grupo.*
 
@@ -127,11 +127,11 @@ $$
 
 La diferencia regular conserva picos anuales pronunciados. La estacional atenúa ese patrón pero mantiene persistencia de corto plazo; la combinación reduce más dicha persistencia. Diferenciar no garantiza varianza constante ni demuestra por sí solo estacionariedad.
 
-![Serie original y diferencias con autocorrelaciones](../figuras/diferencias.png)
+![Serie original y diferencias con autocorrelaciones](/figuras/diferencias.png)
 
 *Figura 3. Serie original y transformaciones regular, estacional y combinada, con sus ACF.*
 
-![ACF y PACF de la serie diferenciada](../figuras/acf_pacf.png)
+![ACF y PACF de la serie diferenciada](/figuras/acf_pacf.png)
 
 *Figura 4. ACF y PACF de $w_t$, con $d=D=1$ y ciclo de doce meses.*
 
@@ -186,7 +186,7 @@ El MA estacional muy próximo a $-1$ exige cautela por su cercanía a la fronter
 
 Para revisar la dependencia no explicada se excluyeron los primeros 13 residuos —o más si la inicialización lo exigía— y se aplicó Ljung–Box con `model_df=2`, correspondiente a los términos AR y MA estacionales.
 
-![Residuos y ACF del SARIMA](../figuras/residuos.png)
+![Residuos y ACF del SARIMA](/figuras/residuos.png)
 
 *Figura 5. Residuos históricos del SARIMA seleccionado y su autocorrelación.*
 
@@ -232,7 +232,7 @@ La comparación proporciona una conclusión útil para el siguiente miniproyecto
 
 En la reproducción de los errores por fecha, la línea base estacional presentó diferencias absolutas destacadas en diciembre de 2024 (**17,024 puntos; sobreestimación**), septiembre de 2024 (**14,776; sobreestimación**), diciembre de 2025 (**9,987; subestimación**) y noviembre de 2024 (**8,398; sobreestimación**). Para SARIMA, los mayores errores absolutos medios por fecha se ubicaron en mayo de 2025 (**15,339**), abril de 2025 (**14,457**), junio de 2025 (**9,999**) y agosto de 2026 (**9,606**). Abril y mayo de 2025 reflejaron subestimaciones. Estos resúmenes por mes mezclan horizontes y no disponen del mismo número de evaluaciones por fecha; se ofrecen como **diagnóstico complementario** y no reemplazan las métricas agregadas del *backtest*.
 
-![Ejemplo de pronósticos del último origen](../figuras/ultimo_origen.png)
+![Ejemplo de pronósticos del último origen](/figuras/ultimo_origen.png)
 
 *Figura 6. Ilustración del último origen (agosto de 2025) y sus pronósticos a septiembre de 2025–agosto de 2026. Es un ejemplo, no la totalidad del backtest.*
 
