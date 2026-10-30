@@ -21,6 +21,8 @@ import pandas as pd  # noqa: E402
 from comun import (RAIZ, backtest, cargar_serie, estacional_ingenuo,  # noqa: E402
                    fechas_siguientes, ingenuo)
 
+from statsmodels.tsa.seasonal import STL
+
 warnings.filterwarnings("ignore")
 FIGURAS = RAIZ / "figuras"
 RESULTADOS = RAIZ / "resultados"
@@ -71,8 +73,41 @@ def graficar_serie(serie):
 # ============================================================
 
 def descomponer(serie):
-    """TODO: STL robusta con el periodo de la serie; guarde figuras/stl.png."""
-    raise NotImplementedError("descomposición STL")
+    """Descomponer la serie mediante STL robusta y guardar la figura."""
+
+    # Separar tendencia, estacionalidad y residuo.
+    resultado = STL(
+        serie,
+        period=PERIODO,
+        robust=True
+    ).fit()
+
+    # Crear la gráfica de los componentes.
+    figura = resultado.plot()
+    figura.set_size_inches(10, 8)
+
+    figura.axes[0].set_title(
+        "Descomposición STL del índice de ventas de prendas de vestir"
+    )
+
+    # Identificar los componentes en español.
+    etiquetas = [
+        "Serie observada",
+        "Tendencia",
+        "Estacionalidad",
+        "Residuo"
+    ]
+
+    for eje, etiqueta in zip(figura.axes, etiquetas):
+        eje.set_ylabel(etiqueta)
+
+    figura.tight_layout()
+
+    # Guardar y cerrar la figura.
+    figura.savefig(FIGURAS / "stl.png", dpi=150)
+    plt.close(figura)
+
+    print("Descomposición STL guardada en figuras/stl.png")
 
 
 # ============================================================
