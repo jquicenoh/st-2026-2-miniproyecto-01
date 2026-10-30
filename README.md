@@ -6,6 +6,20 @@
 **Periodo:** enero de 2019 a agosto de 2026 (92 observaciones)  
 **Fecha del informe:** 30 de octubre de 2026
 
+## Integrantes
+
+Los grupos son de 3 integrantes.
+
+Esta tabla identifica al grupo. Sin ella, o con algún dato incompleto, la
+entrega pierde el 20 %; quien no aparezca aquí no cuenta como parte del grupo.
+
+| Nombre completo | Código | Correo institucional |
+|---|---|---|
+|Jessica Quiceno | | jessica.quiceno@uao.edu.co|
+|Melissa Muñoz | | melissa.munoz@uao.edu.co|
+| | | |
+
+
 > Este informe corresponde al archivo exigido por el curso: `docs/informe.md`. Las figuras se referencian mediante rutas relativas a `figuras/`. Los resultados numéricos provienen de las ejecuciones y verificaciones consignadas en el informe técnico del grupo. Las cifras complementarias reproducidas se identifican como tales.
 
 ## 1. La serie
