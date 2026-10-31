@@ -1,15 +1,5 @@
 # Informe del miniproyecto 1
 
-Llene cada sección reemplazando los marcadores `{{...}}`, sin quitar las
-secciones. Las cifras salen de lo que imprime `python miniproyecto.py` y las
-figuras son las que ese guion deja en `figuras/`. Las fórmulas van en LaTeX
-(`$...$` o `$$...$$`).
-
-{{El mejor modelo clásico, cuánto mejora a la mejor línea base en cada
-métrica y en qué meses o tramos sigue fallando. Es el modelo que el
-miniproyecto 2 debe superar.}}
-# Informe del miniproyecto 1
-
 **Pronóstico de series temporales con IA — Universidad Autónoma de Occidente, 2026-II**  
 **Serie:** índice mensual de ventas reales de prendas de vestir y textiles, total nacional (DANE).  
 **Periodo analizado:** enero de 2019 a agosto de 2026.
