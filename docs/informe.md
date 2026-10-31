@@ -111,6 +111,13 @@ $$
 
 La diferencia regular elimina una observación inicial y la estacional elimina doce; su combinación deja **79 valores**. Estos valores iniciales indefinidos son efecto matemático de diferenciar, no faltantes originales.
 
+![Diagnóstico de diferencias](../figuras/diagnostico_diferencias.png)
+
+La figura compara la serie original, la diferencia regular, la diferencia
+estacional y ambas diferencias, junto con sus autocorrelaciones. La
+combinación de diferencias reduce visualmente la persistencia, aunque
+la prueba ADF no permite confirmar estacionariedad al 5 %.
+
 ![ACF y PACF](../figuras/acf_pacf.png)
 
 Sobre la serie con ambas diferencias se analizaron la **ACF y la PACF hasta 36 rezagos** (PACF con `method="ywm"`). En la verificación numérica aparecen picos fuera de las bandas aproximadas del 95 % en:
