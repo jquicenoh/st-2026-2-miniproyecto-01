@@ -116,6 +116,25 @@ def descomponer(serie):
 
     print("Descomposición STL guardada en figuras/stl.png")
 
+     # Promedio del componente estacional por mes calendario.
+    estacionalidad = resultado.seasonal.groupby(
+        resultado.seasonal.index.month
+    ).mean()
+    estacionalidad.index.name = "mes"
+
+    print("\nEstacionalidad promedio por mes (puntos del índice):")
+    print(estacionalidad.to_string(float_format=lambda x: f"{x:.3f}"))
+
+    # Mayor residuo en magnitud absoluta, conservando su signo.
+    fecha_extrema = resultado.resid.abs().idxmax()
+    residuo_extremo = resultado.resid.loc[fecha_extrema]
+
+    print(
+        "\nMayor residuo absoluto de STL: "
+        f"{fecha_extrema:%Y-%m}, "
+        f"residuo = {residuo_extremo:.3f} puntos del índice"
+    )
+
 
 # ============================================================
 # 3. Estacionariedad e identificación

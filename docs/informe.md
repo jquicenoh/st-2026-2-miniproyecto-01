@@ -54,7 +54,7 @@ Para interpretar los meses altos y bajos se promedió el componente estacional d
 
 **Diciembre** se ubica muy por encima de la tendencia, con un aporte estacional promedio de **+167,232 puntos**; **noviembre** también queda por encima (**+17,878**). Los restantes meses tienen promedios por debajo de la tendencia, especialmente **febrero** (**−34,361**). La estacionalidad no es necesariamente idéntica en todos los años.
 
-El **residuo de mayor magnitud absoluta** ocurre en **abril de 2020**: aproximadamente **−65,108 puntos**. Indica que, en ese mes, el valor observado quedó 65,108 puntos por debajo de la suma de tendencia y estacionalidad estimadas. Es un **residuo de descomposición**, no un error de pronóstico fuera de muestra. Los valores detallados de esta sección proceden de la verificación reproducida con el mismo Excel y procedimiento, según el informe técnico del proyecto.
+El **residuo de mayor magnitud absoluta** ocurre en **abril de 2020**: aproximadamente **−65,108 puntos**. Indica que, en ese mes, el valor observado quedó 65,108 puntos por debajo de la suma de tendencia y estacionalidad estimadas. Es un **residuo de descomposición**, no un error de pronóstico fuera de muestra. Los promedios estacionales mensuales y la fecha y el valor del mayor residuo absoluto se calculan e imprimen al ejecutar `python miniproyecto.py`.
 
 ## 3. Líneas base y backtest
 
@@ -216,6 +216,12 @@ La siguiente tabla reproduce los resultados finales de `resultados/metricas.csv`
 
 *RMSE y MAE están expresados en puntos del índice; MAPE está expresado en porcentaje. Los valores se muestran con dos decimales, tal como se reportaron en la ejecución final compartida.*
 
+![Comparación de métricas](../figuras/comparacion_metricas.png)
+
+El estacional ingenuo obtuvo los menores errores en las tres métricas.
+SARIMA y SARIMAX presentaron resultados muy similares, sin superar
+la línea base estacional. El modelo ingenuo registró los mayores errores.
+
 ## 7. Conclusión
 
 Entre los **modelos clásicos ajustados**, el mejor fue **SARIMA$(0,1,0)(1,1,1)_{12}$**: RMSE **8,54**, MAE **7,30** y MAPE **7,29 %**. No obstante, **no superó la mejor línea base**, el **estacional ingenuo**, que obtuvo RMSE **6,26**, MAE **5,54** y MAPE **4,87 %**.
@@ -223,6 +229,19 @@ Entre los **modelos clásicos ajustados**, el mejor fue **SARIMA$(0,1,0)(1,1,1)_
 Frente a esa línea base, SARIMA **aumentó** el RMSE en **2,28 puntos del índice**, el MAE en **1,76 puntos del índice** y el MAPE en **2,42 puntos porcentuales**. Esto equivale aproximadamente a **36,4 % más RMSE** y **31,8 % más MAE** tomando como denominador el error de la línea base. **No hubo mejora predictiva** con SARIMA ni con SARIMAX en el protocolo utilizado. La incorporación del conteo de festivos fue ligeramente desfavorable respecto al SARIMA sin exógena.
 
 La reproducción de errores por fecha identifica dificultades para el estacional ingenuo en **diciembre de 2024** (error absoluto **17,024** puntos; sobreestimación), **septiembre de 2024** (**14,776**; sobreestimación), **diciembre de 2025** (**9,987**; subestimación) y **noviembre de 2024** (**8,398**; sobreestimación). Aunque sigue el patrón anual, no anticipa completamente los cambios en la amplitud de los máximos estacionales. Para SARIMA, los mayores errores absolutos medios por fecha de la reproducción se presentan en **mayo de 2025** (**15,339**), **abril de 2025** (**14,457**), **junio de 2025** (**9,999**) y **agosto de 2026** (**9,606**); en abril y mayo de 2025 predomina la subestimación. Estos resúmenes por fecha pueden mezclar distintos horizontes y números de evaluaciones, de modo que no representan muestras independientes equivalentes.
+
+![Pronósticos del último origen](../figuras/ultimo_origen.png)
+
+La figura presenta los doce pronósticos realizados con entrenamiento
+hasta agosto de 2025, frente a los valores observados de septiembre
+de 2025 a agosto de 2026. Los modelos reproducen el máximo estacional
+de diciembre, aunque presentan diferencias respecto a los valores
+observados. Los pronósticos de SARIMA y SARIMAX quedan prácticamente
+superpuestos.
+
+Esta figura ilustra un solo origen. La clasificación final de los
+modelos se basa en las métricas promedio de los trece orígenes del
+backtest.
 
 El resultado principal es que **un método sencillo que respeta la estacionalidad anual superó a los modelos clásicos ensayados**. La comparación está limitada por la ventana reciente de evaluación, la superposición de orígenes, la selección de órdenes usando la serie completa antes del backtest, la rejilla acotada y la **autocorrelación residual** detectada por Ljung–Box. Además, ADF no permitió confirmar estacionariedad al 5 % y el coeficiente MA estacional quedó cerca de la frontera de invertibilidad. Estos hallazgos justifican revisar las diferencias, ampliar prudentemente las especificaciones y separar más estrictamente selección y evaluación en trabajos posteriores.
 
